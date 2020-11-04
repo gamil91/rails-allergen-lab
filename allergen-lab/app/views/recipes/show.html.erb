@@ -1,0 +1,13 @@
+<h2><%=@recipe.name%></h2>
+written by: <%=link_to @recipe.user.name, @recipe.user%>
+
+<h3>Ingredients</h3>
+<ul>
+<%@recipe.foods.each do |f|%>
+<li><%=f.measurement%> <%=f.ingredient.name%></li>
+<% end %>
+</ul>
+
+<%= link_to "Add ingredient", new_food_path %> ||
+<%=link_to "Delete this recipe", @recipe, method: :delete, data:{confirm:"are you sure you want to delete this recipe?"}%> ||
+<%=link_to "All Recipes", recipes_path%>

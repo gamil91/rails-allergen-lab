@@ -1,0 +1,21 @@
+<ul>
+<% if @recipe.errors.any? %>
+<h3>Errors:</h3>
+<% @recipe.errors.full_messages.each do |m|%>
+<li><%= m %></li>
+    <%end %>
+<% end %>
+</ul>
+
+<%=form_for @recipe do |f|%>
+<%=f.label :name%><br/>
+<%=f.text_field :name%><br/><br/>
+<%=f.label "Author"%><br/>
+<%=f.collection_select :user_id, User.all, :id, :name%><br/><br/>
+<%=f.label :meal_type%><br/>
+<%=f.text_field :meal_type%><br/>
+(Breakfast, Lunch, Dinner, Sweets)<br/><br/>
+<%=f.submit%> || <%=button_to "All Recipes", recipes_path%>
+
+<% end %>
+

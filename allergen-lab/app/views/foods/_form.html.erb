@@ -1,0 +1,19 @@
+
+<ul>
+<%if @food.errors.any?%>
+    <% @food.errors.full_messages.each do |m| %>
+    <li> <%= m %></li>
+    <% end %>
+<% end %>
+</ul>
+
+
+<%=form_for @food do |f|%>
+<%=f.label :recipe%><br/>
+<%=f.collection_select :recipe_id, Recipe.all, :id, :name%><br/><br/>
+<%=f.label :ingredient%><br/>
+<%=f.collection_select :ingredient_id, Ingredient.all, :id, :name%><br/><br/>
+<%=f.label :measurement%><br/>
+<%=f.text_field :measurement%><br/><br/>
+<%=f.submit%>
+<% end %>
